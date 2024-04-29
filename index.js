@@ -18,7 +18,8 @@ function effectiveDamage(power, armor, armorPenetration) {
   let effectiveArmor = normalize(armor) - normalize(armorPenetration);
   effectiveArmor = effectiveArmor <= 0 ? 0 : effectiveArmor;
   const damageDecrease = effectiveArmor / (100 + effectiveArmor);
-  return Math.floor(normalize(power) * (1 - damageDecrease));
+//  return Math.floor(normalize(power) * (1 - damageDecrease));
+  return Math.round(normalize(power) * (1 - damageDecrease));
 }
 
 /**
@@ -29,7 +30,7 @@ function effectiveDamage(power, armor, armorPenetration) {
 function normalize(n) {
   if (n < 0) {
     return 0;
-  } else if (n >= 2000) {
+  } else if (2000 <= n) {
     return 2000;
   } else {
     return n;
